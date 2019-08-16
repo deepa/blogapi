@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import site.deepa.blog.entity.Post;
 import site.deepa.blog.services.PostsService;
 
 @RestController
+@Validated
 public class PostsController {
 	
 	@Autowired
@@ -41,7 +43,7 @@ public class PostsController {
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value="/posts/{id}")
-	public void updatePost(@RequestBody Post post, @PathVariable int id) {
+	public void updatePost(@RequestBody Post post, @PathVariable @Min(1) int id) {
 		service.updatePost(post, id);
 	}
 	
