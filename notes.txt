@@ -1,0 +1,26 @@
+MySQL
+
+1. Connect:
+mysql -h host -u user -p
+
+2. Create schema:
+> create database blog;
+> use blog
+
+3. Create table:
+> CREATE TABLE post (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100),
+    body text(1000) )
+
+4. Insert some values:
+> insert into post (title, body) values ("title4", "body");
+
+Annotations:
+
+- @SpringBootApplication: makes it a spring app (BlogApplication.java)
+- @Entity, @Table, @Id, @Column: used with JPA (Post.java)
+- @RestController: Contains @Controller and @ResponseBody; used to map the request and return a response (PostsController.java)
+- @Autowired: Allows to obtain an instance of the class through Dependency Inversion (PostsController.java, PostService.java)
+- @RequestMapping, @PathVariable, @RequestBody: Notate components of the REST request (PostsController.java)
+- @ControllerAdvice, @ExceptionHandler: Used to customize application errors
